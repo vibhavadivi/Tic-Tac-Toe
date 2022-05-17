@@ -21,7 +21,7 @@ def main():
         if (checkWinner(board) == 1 or board.sum() == 13):
             print ("You won!")
             return
-        input("Any key to continue: ")
+        input("Press Enter to continue: ")
         print ("Comp's turn")
         comp = np.random.randint(0,9)
         while (board[comp] != 0):
