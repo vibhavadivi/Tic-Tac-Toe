@@ -4,13 +4,19 @@ from torch import rand
 import shutil
 
 def main():
-    board = np.zeros(9)
+    NUM_SQUARES = 9
+    MAX_SUM = 13
+    board = np.zeros(NUM_SQUARES)
     shutil.copy('blankboard.txt', 'gameboard.txt')
     print("Current Board: ")
     with open('gameboard.txt', 'r') as f:
         print(f.read())
-    while (board.sum() < 13):
-        player = int(input("Enter where to put x from 1 to 9: "))
+    while (board.sum() < MAX_SUM):
+        try:
+            player = int(input("Enter where to put x from 1 to 9: "))
+        except:
+            print("Not a valid number. Game Over :((")
+            return
         player -= 1
         while ((player < 0) or (player > 8) or (board[player] != 0)):
             player = int(input("Try Again: "))
