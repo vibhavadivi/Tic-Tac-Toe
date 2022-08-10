@@ -3,11 +3,11 @@ import numpy as np
 from torch import rand
 import shutil
 
+NUM_SQUARES = 9
+MAX_SUM = 13
+
 def main():
-    NUM_SQUARES = 9
-    MAX_SUM = 13
-    board = np.zeros(NUM_SQUARES)
-    shutil.copy('blankboard.txt', 'gameboard.txt')
+    board = init()
     print("Current Board: ")
     with open('gameboard.txt', 'r') as f:
         print(f.read())
@@ -40,6 +40,11 @@ def main():
             print("You lost :(")
             return
     print ("Draw")
+    
+def init():
+    board = np.zeros(NUM_SQUARES)
+    shutil.copy('blankboard.txt', 'gameboard.txt')
+    return board    
 
 def checkWinner(board):
     if board[0] == board[1] == board[2] != 0:
